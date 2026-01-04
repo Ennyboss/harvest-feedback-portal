@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HARVEST Tool Feedback Portal - Understanding and improving digital agriculture tools through stakeholder feedback">
+    <title>HARVEST Tool Feedback Portal</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            font-size: 16px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a2a4a 100%);
+            color: white;
+            padding: 40px 20px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            max-height: 120px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-text {
+            width: 100%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        header .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        header .supporting-line {
+            font-size: 1rem;
+            margin-top: 15px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        main {
+            background-color: white;
+            padding: 40px 0;
+        }
+
+        section {
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #1a2a4a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        section h3 {
+            font-size: 1.5rem;
+            color: #1a2a4a;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        /* Intro Section */
+        .intro-content {
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: left;
+        }
+
+        .intro-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .intro-content ul {
+            margin: 20px 0 20px 30px;
+            font-size: 1.1rem;
+        }
+
+        .intro-content li {
+            margin-bottom: 10px;
+        }
+
+        /* Video Section */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .video-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-label {
+            font-weight: 600;
+            color: #1a2a4a;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-caption {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* PDF Section */
+        .pdf-section {
+            max-width: 900px;
+            margin: 30px auto 0;
+        }
+
+        .pdf-section p {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        .pdf-download {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .pdf-download-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1a2a4a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .pdf-download-btn:hover {
+            background-color: #0d1b2a;
+        }
+
+        /* Survey Section */
+        .survey-intro {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .survey-roles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .role-card {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-color: #1a2a4a;
+        }
+
+        .role-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .role-title {
+            font-size: 1.3rem;
+            color: #1a2a4a;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .role-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+            min-height: 40px;
+        }
+
+        .survey-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1a2a4a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .survey-btn:hover {
+            background-color: #0d1b2a;
+            transform: scale(1.05);
+        }
+
+        .survey-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a2a4a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 3px solid #0d1b2a;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        footer a {
+            color: #7b9cc4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                gap: 25px;
+            }
+
+            .logo {
+                max-height: 100px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header .subtitle {
+                font-size: 1.1rem;
+            }
+
+            section h2 {
+                font-size: 1.75rem;
+            }
+
+            .video-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pdf-viewer {
+                height: 400px;
+            }
+
+            .survey-roles {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-content {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 30px 15px 40px;
+            }
+
+            .logo {
+                max-height: 80px;
+            }
+
+            .header-content {
+                gap: 20px;
+            }
+
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            header .subtitle {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 0 15px;
+            }
+
+            .pdf-viewer {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="icicle-logo.jpg" alt="ICICLE - Democratizing AI" class="logo">
+                </div>
+                <div class="header-text">
+                    <h1>HARVEST Tool Feedback Portal</h1>
+                    <p class="subtitle">Understanding and improving digital agriculture tools through stakeholder feedback.</p>
+                    <p class="supporting-line">Part of the ICICLE AI Institute's mission to make AI in agriculture more accessible and user-friendly.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Intro Section -->
+        <section id="intro" class="container">
+            <div class="intro-content">
+                <h2>Welcome!</h2>
+                <p>
+                    This page introduces HARVEST, a digital agriculture tool developed by ICICLE to help agricultural stakeholders make smarter field decisions. Please watch the short videos, read the 5-Step Guide, and share your feedback in a brief survey. Your input will help make the tool more practical and user-friendly.
+                </p>
+                <ul>
+                    <li>Watch two short videos to see HARVEST in action.</li>
+                    <li>Read a simple "HARVEST in 5 Steps" guide.</li>
+                    <li>Complete a short role-based feedback form (takes 3–5 minutes).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="videos" class="container">
+            <h2>🎥 Learn About HARVEST</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem;">
+                Watch these short videos to see how HARVEST works in practice.
+            </p>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <div class="video-label">▶️ Video 1: HARVEST – AI-Enabled Precision Agriculture</div>
+                    <div class="video-embed">
+                        <iframe 
+                            src="https://www.youtube.com/embed/8MImqlqsmVc" 
+                            title="HARVEST – AI-Enabled Precision Agriculture"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-caption">Overview of the HARVEST tool and its workflow.</p>
+                </div>
+                <div class="video-wrapper">
+                    <div class="video-label">▶️ Video 2: ICICLE Digital Agriculture Pipeline Demo</div>
+                    <div class="video-embed">
+                        <iframe 
+                            src="https://www.youtube.com/embed/BnGy8Z9r-zE" 
+                            title="ICICLE Digital Agriculture Pipeline Demo"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-caption">How HARVEST fits into the digital agriculture pipeline.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PDF Section -->
+        <section id="guide" class="container">
+            <h2>📄 Read the HARVEST Guide</h2>
+            <h3>HARVEST in 5 Steps – Quick Guide</h3>
+            <div class="pdf-section">
+                <p>
+                    This short guide explains HARVEST in simple language — how it collects data, processes information, and turns it into practical field insights.
+                </p>
+                <iframe 
+                    class="pdf-viewer"
+                    src="Harvest_In_5_Steps_Guide.pdf"
+                    title="HARVEST in 5 Steps – Quick Guide">
+                </iframe>
+                <div class="pdf-download">
+                    <a href="Harvest_In_5_Steps_Guide.pdf" class="pdf-download-btn" download>
+                        Download the HARVEST Guide (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Survey Section -->
+        <section id="survey" class="container">
+            <h2>📝 Share Your Feedback</h2>
+            <p class="survey-intro">
+                We'd love your input! After watching the videos and reviewing the guide, please choose your role and complete the quick feedback form below. Your responses are anonymous and will be used only to improve the usability and training of the HARVEST tool.
+            </p>
+            <div class="survey-roles">
+                <div class="role-card">
+                    <div class="role-icon">👨‍🌾</div>
+                    <div class="role-title">Farmer</div>
+                    <div class="role-description">Share your experience and insights as an agricultural producer</div>
+                    <a href="https://forms.gle/JoVPRUqrXT26c43Q6" 
+                       class="survey-btn" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Take Survey
+                    </a>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">🎓</div>
+                    <div class="role-title">Extension Agent</div>
+                    <div class="role-description">Help us understand how HARVEST can support your outreach work</div>
+                    <a href="https://forms.gle/vtqDfC3XLGF4n52dA" 
+                       class="survey-btn" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Take Survey
+                    </a>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">🏢</div>
+                    <div class="role-title">Agribusiness Professional</div>
+                    <div class="role-description">Provide feedback from an industry and commercial perspective</div>
+                    <a href="https://forms.gle/UhyR4MMTiBKs7DyH8" 
+                       class="survey-btn" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Take Survey
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Developed by Eniola Olakanmi, ICICLE AI Institute Fellow, Tuskegee University (2025).</p>
+            <p>Hosted for educational outreach. Feedback collected for usability improvement only.</p>
+            <p>
+                Questions or issues? Contact: 
+                <a href="mailto:eolakanmi6097@tuskegee.edu">eolakanmi6097@tuskegee.edu</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
