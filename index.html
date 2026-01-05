@@ -188,7 +188,8 @@
         /* PDF Section */
         .pdf-section {
             max-width: 900px;
-            margin: 30px auto 0;
+            margin: 0 auto 3rem auto;
+            text-align: center;
         }
 
         .pdf-section p {
@@ -197,34 +198,36 @@
             font-size: 1.1rem;
         }
 
-        .pdf-viewer {
-            width: 100%;
-            height: 600px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-        }
-
-        .pdf-download {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-        }
-
         .pdf-download-btn {
             display: inline-block;
-            padding: 12px 30px;
-            background-color: #1a2a4a;
-            color: white;
+            padding: 14px 28px;
+            background: #0b295c;
+            color: #fff;
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: 600;
-            transition: background-color 0.3s ease;
+            margin-bottom: 1rem;
+            transition: opacity 0.3s ease;
         }
 
         .pdf-download-btn:hover {
-            background-color: #0d1b2a;
+            opacity: 0.9;
+        }
+
+        .pdf-pages {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pdf-page-img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         /* Survey Section */
@@ -352,8 +355,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .pdf-viewer {
-                height: 400px;
+            .pdf-page-img {
+                margin-bottom: 8px;
             }
 
             .survey-roles {
@@ -390,9 +393,6 @@
                 padding: 0 15px;
             }
 
-            .pdf-viewer {
-                height: 300px;
-            }
         }
     </style>
 </head>
@@ -472,15 +472,26 @@
                 <p>
                     This short guide explains HARVEST in simple language — how it collects data, processes information, and turns it into practical field insights.
                 </p>
-                <iframe 
-                    class="pdf-viewer"
-                    src="Harvest_In_5_Steps_Guide.pdf"
-                    title="HARVEST in 5 Steps – Quick Guide">
-                </iframe>
-                <div class="pdf-download">
-                    <a href="Harvest_In_5_Steps_Guide.pdf" class="pdf-download-btn" download>
-                        Download the HARVEST Guide (PDF)
-                    </a>
+                <!-- Download button -->
+                <a href="https://raw.githubusercontent.com/Ennyboss/harvest-feedback-portal/main/Harvest_In_5_Steps_Guide.pdf" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="pdf-download-btn" 
+                   download>
+                    📥 Read the HARVEST Guide (PDF)
+                </a>
+
+                <!-- iOS-friendly image gallery (renders all pages as scrollable images) -->
+                <div class="pdf-pages">
+                    <img src="Harvest_In_5_Steps_Guide_page-0001.jpg" 
+                         alt="HARVEST Guide Page 1" 
+                         class="pdf-page-img">
+                    <img src="Harvest_In_5_Steps_Guide_page-0002.jpg" 
+                         alt="HARVEST Guide Page 2" 
+                         class="pdf-page-img">
+                    <img src="Harvest_In_5_Steps_Guide_page-0003.jpg" 
+                         alt="HARVEST Guide Page 3" 
+                         class="pdf-page-img">
                 </div>
             </div>
         </section>
